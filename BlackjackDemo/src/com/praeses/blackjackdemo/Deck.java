@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Deck {
 	
-	//instance vars
+	
 	private ArrayList<Card> cards;
 	
 	//constructor

@@ -15,8 +15,8 @@ public class Blackjack {
 		playingDeck.shuffle();
 		
 		//Create a deck for the player and dealer
-		Deck playerDeck = new Deck();
-		Deck dealerDeck = new Deck();
+		Deck playerHand = new Deck();
+		Deck dealerHand = new Deck();
 		
 		Scanner userInput = new Scanner(System.in);
 		
@@ -40,15 +40,15 @@ public class Blackjack {
 			
 			//Dealing
 			//Player gets two cards
-			playerDeck.draw(playingDeck);
-			playerDeck.draw(playingDeck);
+			playerHand.draw(playingDeck);
+			playerHand.draw(playingDeck);
 			
 			//Dealer gets two cards
-			dealerDeck.draw(playingDeck);
-			dealerDeck.draw(playingDeck);
+			dealerHand.draw(playingDeck);
+			dealerHand.draw(playingDeck);
 			
 			// end round for instant Blackjack
-			if(playerDeck.cardsValue() == 21) {
+			if(playerHand.cardsValue() == 21) {
 				playerMoney += playerBet * 2;
 				endRound = true;
 				break;
@@ -57,14 +57,14 @@ public class Blackjack {
 			//hits
 			while(true) {
 				System.out.println("Your hand: ");
-				System.out.println(playerDeck.toString());
-				System.out.println("Your have: " + playerDeck.cardsValue());
+				System.out.println(playerHand.toString());
+				System.out.println("Your have: " + playerHand.cardsValue());
 				
 				
 			
 				
 				//Display Dealer Hand
-				System.out.println("Dealer hand: " + dealerDeck.getCard(0).toString() + " and [Hidden]");
+				System.out.println("Dealer hand: " + dealerHand.getCard(0).toString() + " and [Hidden]");
 				
 				
 				
@@ -76,11 +76,11 @@ public class Blackjack {
 				
 				//They Hit 
 				if(response == 1) {
-					playerDeck.draw(playingDeck);
-					System.out.println("You drew a: " + playerDeck.getCard(playerDeck.deckSize()-1).toString());
+					playerHand.draw(playingDeck);
+					System.out.println("You drew a: " + playerHand.getCard(playerHand.deckSize()-1).toString());
 					//Bust if > 21
-					if(playerDeck.cardsValue() > 21) {
-						System.out.println("Bust! " + playerDeck.cardsValue());
+					if(playerHand.cardsValue() > 21) {
+						System.out.println("Bust! " + playerHand.cardsValue());
 						playerMoney -= playerBet;
 						endRound = true;
 						break;
@@ -93,50 +93,50 @@ public class Blackjack {
 			}
 			
 			//Reveal Dealer Card
-			System.out.println("Dealer Cards: " + dealerDeck.toString());
+			System.out.println("Dealer Cards: " + dealerHand.toString());
 			//See if dealer has more points than player
-			if((dealerDeck.cardsValue() > playerDeck.cardsValue())&& endRound == false) {
+			if((dealerHand.cardsValue() > playerHand.cardsValue())&& endRound == false) {
 				System.out.println("Dealer wins!");
 				playerMoney -= playerBet;
 				endRound = true;
 			}
 			//Dealer Draws at 16, stand at 17
-			while((dealerDeck.cardsValue() < 17) && endRound == false){
-				dealerDeck.draw(playingDeck);
-				System.out.println("Dealer drew: " + dealerDeck.getCard(dealerDeck.deckSize()-1).toString());
+			while((dealerHand.cardsValue() < 17) && endRound == false){
+				dealerHand.draw(playingDeck);
+				System.out.println("Dealer drew: " + dealerHand.getCard(dealerHand.deckSize()-1).toString());
 			}
 			//Display total value for dealer 
-			System.out.println("Dealer has " + dealerDeck.cardsValue());
+			System.out.println("Dealer has " + dealerHand.cardsValue());
 			
 			//Determine if Dealer busted 
-			if((dealerDeck.cardsValue() > 21)&& endRound == false) {
+			if((dealerHand.cardsValue() > 21)&& endRound == false) {
 				System.out.println("Dealer Bust, You Win!");
 				playerMoney += playerBet;
 				endRound = true;
 			}
 			
 			//Determine if push
-			if((playerDeck.cardsValue() == dealerDeck.cardsValue())&& endRound == false) {
+			if((playerHand.cardsValue() == dealerHand.cardsValue())&& endRound == false) {
 				System.out.println("Push");
 				endRound = true;
 			}
 			
 			//Dealer lose 
-			if((dealerDeck.cardsValue() < playerDeck.cardsValue())&& endRound == false) {
+			if((dealerHand.cardsValue() < playerHand.cardsValue())&& endRound == false) {
 				System.out.println("You Win!");
 				playerMoney += playerBet;
 				endRound = true;
 			}
 			
 			//if dealer wins after drawing
-			if ((dealerDeck.cardsValue() > playerDeck.cardsValue())&& endRound == false) {
+			if ((dealerHand.cardsValue() > playerHand.cardsValue())&& endRound == false) {
 				System.out.println("Dealer Wins!");
 				playerMoney -= playerBet;
 				endRound = true;
 			}
 			
-			playerDeck.moveAllToDeck(playingDeck);//top of deck
-			dealerDeck.moveAllToDeck(playingDeck);
+			playerHand.moveAllToDeck(playingDeck);//top of deck
+			dealerHand.moveAllToDeck(playingDeck);
 			System.out.println("End of hand.");
 		}
 		
