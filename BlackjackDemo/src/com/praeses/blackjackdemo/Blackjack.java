@@ -20,7 +20,7 @@ public class Blackjack {
 		
 		Scanner userInput = new Scanner(System.in);
 		
-		System.out.println("How much money would you like to enter the game with? Bets for each hand can you range from $2 - $500 dollars");
+		System.out.println("How much money would you like to enter the game with? Bets for each hand typically range from $2 - $500 dollars");
 		double playerMoney = userInput.nextDouble();
 		
 		
