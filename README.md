@@ -51,6 +51,7 @@ Player enters the game with a set amount of money and places a bet on each hand
 
 ## Sample Output of Game  
 
-![image](https://user-images.githubusercontent.com/74474124/213061870-ac069f4b-a7bf-4075-a1b8-16025a86eea5.png)
+![image](https://user-images.githubusercontent.com/74474124/213264055-98e00003-eb10-4587-b7ea-1e6f4d3d016b.png)
+
 
 
