@@ -21,8 +21,8 @@ Rules implemented for the dealer in the game:
 
 The player is paid according to the standard method: 
 
-* Player get paid 2:1 for BlackJack 
-* Player 1:1 for other win
+* Player gets paid 1.5:1 for Natural BlackJack 
+* Player gets paid 1:1 for other win
 
 In the case of a tied score, known as "push" or "standoff", bets are returned without adjustment
 
