@@ -10,11 +10,11 @@ The objective of the game is to beat the dealer, which can be done in the follow
 * Reach a final score higher than the dealer without exceeding 21
 * Let the dealer draw additional cards until his or her hand exceeds 21 (bust)
 
-The game is implemented with standard 1 deck of cards. A player can chose to hit or stand after receiving 2 inital cards  
+The game is implemented with a standard deck of cards. A player can choose to hit or stand after receiving 2 inital cards  
 * Hit - Take another card from dealer
 * Stand - Player takes no more cards and dealer draws the card 
 
-Following rules are implemented for the dealer in the game:
+Rules implemented for the dealer in the game:
 
 * Dealer stands on 17 or more 
 * Dealer hits until his cards total 17 or more points
