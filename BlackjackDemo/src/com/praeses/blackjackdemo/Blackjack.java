@@ -48,13 +48,16 @@ public class Blackjack {
 			dealerHand.draw(playingDeck);
 			
 			// end round for instant Blackjack
-			if(playerHand.cardsValue() == 21) {
-				playerMoney += playerBet * 2;
-				endRound = true;
+			if(playerHand.cardsValue() == 21 && dealerHand.cardsValue() != 21) {
+				System.out.println(playerHand.toString());
+				System.out.println(playerHand.cardsValue());
+				System.out.println("BLACKJACK");
+				playerMoney += (playerBet * 1.5);
+				endRound = false;
 				break;
 			}
 			
-			//hits
+			//hit
 			while(true) {
 				System.out.println("Your hand: ");
 				System.out.println(playerHand.toString());
@@ -74,7 +77,7 @@ public class Blackjack {
 				int response = userInput.nextInt();
 				
 				
-				//They Hit 
+				//Hit 
 				if(response == 1) {
 					playerHand.draw(playingDeck);
 					System.out.println("You drew a: " + playerHand.getCard(playerHand.deckSize()-1).toString());
@@ -85,6 +88,13 @@ public class Blackjack {
 						endRound = true;
 						break;
 					}
+					/*if(playerHand.cardsValue() == 21 && dealerHand.cardsValue() != 21) {
+						System.out.println(playerHand.toString());
+						System.out.println(playerHand.cardsValue());
+						System.out.println("BLACKJACK");
+						playerMoney += (playerBet * 2);
+						endRound = false;
+					}*/
 				}
 				
 				if(response ==2) {
