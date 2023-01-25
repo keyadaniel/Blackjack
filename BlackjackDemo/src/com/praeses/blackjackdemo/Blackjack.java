@@ -23,7 +23,6 @@ public class Blackjack {
 		Deck playerHand = new Deck();
 		Deck dealerHand = new Deck();
 
-
 		// Get Player's Bank
 		Scanner userInput = new Scanner(System.in);
 
@@ -48,11 +47,24 @@ public class Blackjack {
 
 		// Game Loop
 		while (playerMoney > 0) {
-			
+
 			// Take the player's bet
-			System.out.println("You have $" + playerMoney + ", how much would you like to bet?");
-			double playerBet = userInput.nextDouble();
-			
+			Scanner betInput = new Scanner(System.in);
+			double playerBet = 0.00;
+			boolean playerIsSettingBet = true;
+
+			while (playerIsSettingBet) {
+				System.out.println("You have $" + playerMoney + ", how much would you like to bet?");
+				try {
+					playerBet = betInput.nextDouble();
+					playerIsSettingBet = false;
+				} catch (java.util.InputMismatchException e) {
+					System.out.println("Please enter a valid number: " + e);
+					betInput.nextLine();
+				}
+			}
+
+			// end game if players tries to be more than what's in bank
 			if (playerBet > playerMoney) {
 				System.out.println("You cannot bet more money than you have");
 				break;
@@ -60,11 +72,11 @@ public class Blackjack {
 
 			boolean endRound = false;
 
-			// Deal player 2 cards 
+			// Deal player 2 cards
 			playerHand.draw(playingDeck);
 			playerHand.draw(playingDeck);
 
-			// Deal dealer 2 cards 
+			// Deal dealer 2 cards
 			dealerHand.draw(playingDeck);
 			dealerHand.draw(playingDeck);
 
